@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login – Eutel</title>
+  <title>Login – Eutel</title>
 
   <!-- Tailwind (browser‑ready build) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- ডায়াগোনাল কাট‑আউট (pseudo‑element) -->
+  <!-- ডায়াগোনাল কাট‑আউট (pseudo‑element) -->
   <style>
     /* angled‑bg সঠিকভাবে কাজ করতে প্যারেন্টকে relative করা জরুরি */
     .angled-bg {
@@ -20,7 +20,7 @@
       content: '';
       position: absolute;
       bottom: -44px;
-      /* সবুজ অংশের বাইরে নামিয়ে এনেছি */
+      /* সবুজ অংশের বাইরে নামিয়ে এনেছি */
       left: 0;
       width: 100%;
       height: 70px;
@@ -32,7 +32,7 @@
   </style>
 </head>
 
-<body class="md:bg-black md:min-h-screen md:flex md:items-center md:justify-center">
+<body class="md:bg-black md:min-h-screen md:flex md:items-center md:justify-center min-h-screen">
 
   <!-- মোবাইল navbar‑style লোগো ➜ কেবল md-এর নিচে দেখা যাবে -->
   <div class="fixed top-0 inset-x-0 z-20 bg-white p-2 shadow md:hidden">
@@ -40,10 +40,10 @@
   </div>
 
   <!-- প্রধান কার্ড -->
-  <div class="relative bg-white rounded-xl overflow-hidden md:shadow-lg md:w-[350px] w-[100%]">
+  <div class="relative bg-white rounded-xl overflow-hidden md:shadow-lg md:w-[350px] w-full h-screen md:h-auto">
 
     <!-- ── Top Green Section ── -->
-    <div class="angled-bg bg-gradient-to-r from-green-600 to-green-500 md:h-65 h-100 p-5">
+    <div class="angled-bg bg-gradient-to-r from-green-600 to-green-500 md:h-65 h-[50vh] p-5">
       <!-- ডেস্কটপের ভাসমান লোগো ➜ মোবাইলে লুকানো -->
       <div class="absolute mx-auto w-[90%] bg-white p-2 rounded-lg shadow hidden md:block">
         <img src="./image/download.png" alt="Eutel Logo" class="h-6" />
@@ -59,7 +59,7 @@
     <!-- ── Floating Form Card ── -->
     <div
       class="absolute left-1/2 -translate-x-1/2
-             md:top-40 top-60
+             md:top-40 top-[30vh]
              md:w-[85%] w-[90%] max-w-md
              bg-white shadow-2xl rounded-lg
              px-6 pt-8 pb-6 z-20">
@@ -118,9 +118,11 @@
     </div>
 
     <!-- ── Bottom Logo (ফর্ম ফ্লোট করার কারণে প্যাডিং) ── -->
-    <div class="pt-[260px] flex justify-center pb-4">
-      <img src="./image/download.png" alt="Eutel Logo" class="h-20" />
-    </div>
+   <div
+  class="absolute bottom-8 inset-x-0 flex justify-center md:static md:pt-[260px] md:flex md:justify-center md:pb-4">
+  <img src="./image/download.png" alt="Eutel Logo" class="h-20" />
+</div>
+
   </div>
 
 </body>
