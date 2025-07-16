@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,75 +11,118 @@
 
   <!-- ডায়াগোনাল কাট‑আউট (pseudo‑element) -->
   <style>
-    .angled-bg::after{
-      content:'';
-      position:absolute;
-      bottom:-44px;          /* সবুজ অংশের বাইরে নামিয়ে এনেছি */
-      left:0;
-      width:100%;
-      height:70px;           /* ঢাল / কাট‑আউটের উচ্চতা */
-      background:#ffffff;
-      transform:skewY(-7deg);
-      transform-origin:bottom left;
+    /* angled‑bg সঠিকভাবে কাজ করতে প্যারেন্টকে relative করা জরুরি */
+    .angled-bg {
+      position: relative;
+    }
+
+    .angled-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -44px;
+      /* সবুজ অংশের বাইরে নামিয়ে এনেছি */
+      left: 0;
+      width: 100%;
+      height: 70px;
+      /* ঢাল/কাট‑আউটের উচ্চতা */
+      background: #ffffff;
+      transform: skewY(-7deg);
+      transform-origin: bottom left;
     }
   </style>
 </head>
-<body class="bg-black min-h-screen flex items-center justify-center">
 
-  <!-- প্রধান কার্ড (সাদা বর্ডার‑রেডিয়াস + শ্যাডো) -->
-  <div class="relative bg-white rounded-xl overflow-hidden shadow-lg w-[350px]">
+<body class="md:bg-black md:min-h-screen md:flex md:items-center md:justify-center">
+
+  <!-- মোবাইল navbar‑style লোগো ➜ কেবল md-এর নিচে দেখা যাবে -->
+  <div class="fixed top-0 inset-x-0 z-20 bg-white p-2 shadow md:hidden">
+    <img src="./image/download.png" alt="Eutel Logo" class="h-6" />
+  </div>
+
+  <!-- প্রধান কার্ড -->
+  <div class="relative bg-white rounded-xl overflow-hidden md:shadow-lg md:w-[350px] w-[100%]">
 
     <!-- ── Top Green Section ── -->
-    <div class="relative angled-bg bg-gradient-to-r from-green-600 h-65 to-green-500 p-5">
-      <!-- ভেসে থাকা লোগো -->
-      <div class="absolute mx-auto w-[90%] bg-white p-2 rounded-lg shadow">
-        <img src="./image/download.png" alt="Eutel Logo" class="h-6 " />
+    <div class="angled-bg bg-gradient-to-r from-green-600 to-green-500 md:h-65 h-100 p-5">
+      <!-- ডেস্কটপের ভাসমান লোগো ➜ মোবাইলে লুকানো -->
+      <div class="absolute mx-auto w-[90%] bg-white p-2 rounded-lg shadow hidden md:block">
+        <img src="./image/download.png" alt="Eutel Logo" class="h-6" />
       </div>
 
       <!-- টেক্সট -->
       <div class="mt-14">
-        <h2 class="text-white font-bold text-lg">Log in</h2>
-        <p class="text-white text-sm">Use your phone number</p>
+        <h2 class="text-white font-bold text-4xl">Log in</h2>
+        <p class="text-white text-xl">Use your phone number</p>
       </div>
     </div>
 
     <!-- ── Floating Form Card ── -->
-    <div class="absolute left-1/2 -translate-x-1/2 top-40
-                w-[85%] bg-white shadow-2xl rounded-lg
-                px-4 pt-6 pb-6 z-20">
+    <div
+      class="absolute left-1/2 -translate-x-1/2
+             md:top-40 top-60
+             md:w-[85%] w-[90%] max-w-md
+             bg-white shadow-2xl rounded-lg
+             px-6 pt-8 pb-6 z-20">
 
-      <form>
+      <form class="space-y-6">
         <!-- Phone -->
-        <label class="block text-sm font-semibold mb-1">Phone number</label>
-        <div class="flex items-center border border-gray-300 rounded-md overflow-hidden mb-4">
-          <span class="px-3 text-gray-500 bg-gray-100">+599</span>
-          <input type="text" placeholder="Phone number" class="w-full px-3 py-2 focus:outline-none" />
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-gray-700">Phone number</label>
+          <div class="flex items-center border border-gray-300 rounded-md overflow-hidden focus-within:border-blue-600 transition">
+            <span class="px-4 py-2 text-gray-600 bg-gray-100 select-none">+599</span>
+            <input
+              type="tel"
+              inputmode="tel"
+              placeholder="Enter phone number"
+              class="flex-grow px-4 py-2 focus:outline-none"
+              required
+            />
+          </div>
         </div>
 
         <!-- Password -->
-        <label class="block text-sm font-semibold mb-1">Password</label>
-        <div class="relative mb-4">
-          <input type="password" placeholder="Password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none" />
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 cursor-pointer">👁️</span>
+        <div>
+          <label class="block text-sm font-semibold mb-2 text-gray-700">Password</label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password-input"
+              placeholder="Enter your password"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-600 transition"
+              required
+            />
+            <button
+              type="button"
+              aria-label="Toggle password visibility"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+              onclick="const input = document.getElementById('password-input'); input.type = input.type === 'password' ? 'text' : 'password'; this.textContent = input.type === 'password' ? '👁️' : '🙈';"
+            >
+              👁️
+            </button>
+          </div>
         </div>
 
         <!-- Login Button -->
-        <button type="submit" class="w-full bg-[#00529B] hover:bg-[#004080] transition text-white py-2 rounded-md font-semibold">
+        <button
+          type="submit"
+          class="w-full bg-[#00529B] hover:bg-[#004080] transition-colors text-white py-3 rounded-md font-semibold text-lg"
+        >
           Log in
         </button>
       </form>
 
-      <!-- Forgot -->
+      <!-- Forgot link -->
       <div class="text-center mt-4">
-        <a href="#" class="text-sm text-gray-600 hover:underline">Forgot password</a>
+        <a href="#" class="text-sm text-gray-600 hover:underline">Forgot password?</a>
       </div>
     </div>
 
-    <!-- ── Bottom Logo (প্যাডিং থাকতে হবে কারণ ফর্ম ভেসে আছে) ── -->
-    <div class="pt-55 flex justify-center pb-4">
+    <!-- ── Bottom Logo (ফর্ম ফ্লোট করার কারণে প্যাডিং) ── -->
+    <div class="pt-[260px] flex justify-center pb-4">
       <img src="./image/download.png" alt="Eutel Logo" class="h-20" />
     </div>
   </div>
 
 </body>
+
 </html>
