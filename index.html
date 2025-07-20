@@ -6,19 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login – Eutel</title>
 
-  <!-- Tailwind (browser‑ready build) -->
+  <!-- Tailwind (browser-ready build) -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-  <!-- কাস্টম স্টাইল -->
+  <!-- Custom Styles -->
   <style>
-    /* ── Slanted green banner (no pseudo‑element) ── */
+    /* Slanted green banner */
     .banner {
       background: #00b34b;
-      /* চাইলে গ্র্যাডিয়েন্ট: bg-gradient-to-r … */
       clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     }
 
-    @media (min-width:768px) {
+    @media (min-width: 768px) {
       .banner {
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
       }
@@ -28,37 +27,42 @@
 
 <body class="bg-white min-h-screen">
 
-  <!-- Mobile logo -->
-  <div class="fixed top-0 inset-x-0 z-20 bg-white p-2 shadow ">
-    <img src="./image/download.png" alt="Eutel Logo" class="h-6 md:h-10" />
-  </div>
+  <!-- Page Wrapper -->
+  <div class="flex flex-col min-h-screen relative">
 
-  <!-- Wrapper -->
-  <div class="flex flex-col min-h-screen">
+    <!-- Green Banner -->
+    <div class="banner h-[45vh] md:h-[350px] flex flex-col items-center justify-center relative px-4">
+      <!-- Logo (centered at top inside banner) -->
+      <div class="bg-white w-[95%] md:w-[75%] mx-auto shadow-lg rounded-lg -mt-24 md:-mt-20 flex items-center p-1">
+        <img src="./image/download.png" alt="Eutel Logo" class="h-12 md:h-16 object-contain" />
+      </div>
 
-    <!-- ── Green banner ── -->
-    <div class="banner h-[45vh] md:h-[350px] p-5 md:p-16 flex flex-col items-center justify-center">
-      <h2 class="text-white font-bold text-3xl md:text-6xl mb-2">Log in</h2>
-      <p class="text-white text-xl md:text-2xl opacity-90 mb-5">Use your phone number</p>
+      <!-- Title and Subtitle -->
+      <h2 class="text-white font-bold text-3xl md:text-6xl mb-2 mt-12 w-full ms-5 md:ms-0  text-left md:text-center">
+        Log in
+      </h2>
+      <p class="text-white text-xl md:text-2xl opacity-90 mb-5 w-full ms-5 md:ms-0 text-left md:text-center">
+        Use your phone number
+      </p>
     </div>
 
-    <!-- ── Login card (desktop‑wide) ── -->
-    <div class="w-full px-4 md:px-20 lg:px-32  z-50">
-      <div class="absolute left-1/2 -translate-x-1/2
-             top-[30%] md:top-[30%]         
-             w-[90%] max-w-md md:max-w-lg
-             bg-white shadow-2xl rounded-lg
-             px-6 md:px-8 pt-8 pb-6 md:pt-10 md:pb-8 z-30">
 
-        <form class="space-y-6 ">
+    <!-- Login Card -->
+    <div class="w-full px-4 md:px-20 lg:px-32 z-50">
+      <div class="absolute left-1/2 -translate-x-1/2 top-[30%] md:top-[30%]         
+           w-[90%] md:max-w-md lg:max-w-xl xl:max-w-2xl
+           bg-white shadow-2xl rounded-lg
+           px-6 md:px-8 pt-8 pb-6 md:pt-10 md:pb-8 z-30">
+
+        <form class="space-y-5">
           <!-- Phone -->
           <div>
             <label class="block text-sm font-semibold mb-2 text-gray-700">Phone number</label>
             <div
               class="flex items-center border-2 border-gray-300 rounded-lg overflow-hidden focus-within:border-green-500 transition">
-              <span class="px-5 py-3 text-gray-600 bg-gray-100 select-none font-medium">+599</span>
+              <span class="px-4 py-2 text-gray-600 bg-gray-100 select-none font-medium">+599</span>
               <input type="tel" inputmode="tel" placeholder="Enter phone number"
-                class="flex-grow px-5 py-3 focus:outline-none text-lg" required />
+                class="flex-grow px-4 py-2 focus:outline-none text-base" required />
             </div>
           </div>
 
@@ -67,33 +71,34 @@
             <label class="block text-sm font-semibold mb-2 text-gray-700">Password</label>
             <div class="relative">
               <input type="password" id="password-input" placeholder="Enter your password"
-                class="w-full px-5 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition text-lg"
+                class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition text-base"
                 required />
               <button type="button" aria-label="Toggle password visibility"
-                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none text-xl"
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none text-lg"
                 onclick="const i=document.getElementById('password-input'); i.type=i.type==='password'?'text':'password'; this.textContent=i.type==='password'?'👁️':'🙈';">👁️</button>
             </div>
           </div>
 
           <!-- Login Button -->
           <button type="submit"
-            class="w-full bg-gradient-to-r from-[#00529B] to-[#0066CC] hover:from-[#004080] hover:to-[#0052A3] transition-all duration-300 text-white py-4 rounded-lg font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+            class="w-full bg-gradient-to-r from-[#00529B] to-[#0066CC] hover:from-[#004080] hover:to-[#0052A3] transition-all duration-300 text-white py-3 rounded-lg font-semibold text-lg shadow-md hover:shadow-lg transform hover:scale-[1.02]">
             Log in
           </button>
         </form>
 
-        <!-- Forgot link -->
+        <!-- Forgot Password -->
         <div class="text-center mt-6">
           <a href="#" class="text-base text-gray-600 hover:text-green-600 hover:underline transition-colors">Forgot
             password?</a>
         </div>
 
-
       </div>
     </div>
-    <!-- Bottom logo -->
-    <div class="absolute top-[90%]  md:top-[85%] left-1/2 transform -translate-x-1/2">
-      <img src="./image/download.png" alt="Eutel Logo" class="h-16 md:h-20 opacity-80" />
+
+
+    <!-- Bottom Floating Logo -->
+    <div class="absolute top-[85%] md:top-[85%] left-1/2 transform -translate-x-1/2">
+      <img src="./image/download.png" alt="Eutel Logo" class="h-24 md:h-20 opacity-80" />
     </div>
 
   </div>
