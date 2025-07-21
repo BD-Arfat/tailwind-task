@@ -13,7 +13,7 @@
   <style>
     /* Slanted green banner */
     .banner {
-      background: #00b34b;
+      background: #4EA91D;
       clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     }
 
@@ -27,25 +27,33 @@
 
 <body class="bg-white min-h-screen">
 
-  <!-- Page Wrapper -->
+  <!-- Full Page -->
   <div class="flex flex-col min-h-screen relative">
 
     <!-- Green Banner -->
-    <div class="banner h-[45vh] md:h-[350px] flex flex-col items-center justify-center relative px-4">
-      <!-- Logo (centered at top inside banner) -->
-      <div class="bg-white w-[95%] md:w-[75%] mx-auto shadow-lg rounded-lg -mt-24 md:-mt-20 flex items-center p-1">
+    <div class="banner h-[45vh] md:h-[400px] flex flex-col items-center justify-center relative px-4">
+      <!-- Logo -->
+      <div class="bg-white w-[90%] md:w-[75%] mx-auto shadow-lg rounded-lg flex items-center p-1
+            absolute top-4 left-1/2 -translate-x-1/2 md:translate-x-0 -md:top-1/2 md:left-auto">
         <img src="./image/download.png" alt="Eutel Logo" class="h-12 md:h-16 object-contain" />
       </div>
 
+
+
+
       <!-- Title and Subtitle -->
-      <h2 class="text-white font-bold text-3xl md:text-4xl lg:text-6xl mb-2 mt-12 w-full ms-5 md:ms-0  text-left md:text-center">
+      <h2
+        class="text-white font-bold text-3xl md:text-4xl lg:text-6xl mb-2 -mt-5 -md:mt-0 w-full sm:ms-9 ms-5 md:ms-0  text-left md:text-center">
         Log in
       </h2>
-      <p class="text-white text-xl md:text-xl lg:text-2xl opacity-90 mb-5 w-full ms-5 md:ms-0 text-left md:text-center">
+      <p
+        class="text-white text-xl md:text-xl lg:text-2xl opacity-90 mb-5 w-full sm:ms-9 ms-5 md:ms-0 text-left md:text-center">
         Use your phone number
       </p>
     </div>
 
+
+    <!-- এইখানে মেইন কনটেন্ট গুলা বসবে start -->
 
     <!-- Login Card -->
     <div class="w-full px-4 md:px-20 lg:px-32 z-50">
@@ -95,8 +103,10 @@
       </div>
     </div>
 
+    <!-- এইখানে মেইন কনটেন্ট গুলা বসবে end -->
 
-    <!-- Bottom Floating Logo -->
+
+    <!-- Bottom Logo -->
     <div class="absolute top-[85%] md:top-[85%] left-1/2 transform -translate-x-1/2">
       <img src="./image/download.png" alt="Eutel Logo" class="h-24 md:h-20 opacity-80" />
     </div>
